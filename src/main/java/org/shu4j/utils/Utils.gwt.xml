@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	<source path="crypt"/>
+	<source path="exception"/>
+	<source path="message"/>
+	<source path="progress"/>
+	<source path="util"/>
+</module>
