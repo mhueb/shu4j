@@ -50,9 +50,9 @@ public abstract class AbstractProgressMonitor implements IProgressMonitor {
   protected void onDone() {
   }
 
-  public void step(int inc) throws Cancel {
+  public void step(int inc) throws CancelationException {
     if (fireCancel)
-      throw new Cancel();
+      throw new CancelationException();
 
     if (inc > 0) {
       int next = progressCounter + inc;

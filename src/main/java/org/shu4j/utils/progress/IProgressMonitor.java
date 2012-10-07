@@ -17,18 +17,6 @@ package org.shu4j.utils.progress;
 
 public interface IProgressMonitor {
   /**
-   * Exception to indicate a user interruption.
-   * 
-   */
-  static public class Cancel extends RuntimeException {
-    private static final long serialVersionUID = 1L;
-
-    public Cancel() {
-      super("Cancelation");
-    }
-  }
-
-  /**
    * 
    * @param title
    * @param stepCount amount of steps necessary to fulfill this Progress
@@ -38,7 +26,7 @@ public interface IProgressMonitor {
   /**
    * 
    * @param steps amount of work solved as part of the stepCount parameter handed into {@link begin}
-   * @throws Cancel
+   * @throws CanceledException
    */
   void step(int steps);
 
