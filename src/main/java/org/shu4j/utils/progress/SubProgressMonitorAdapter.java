@@ -67,7 +67,7 @@ public final class SubProgressMonitorAdapter implements IProgressMonitor {
       parentStepCounter = parentStepCount;
       parentCounter = 0.0;
     }
-    catch (Cancel e) {
+    catch (CancelationException e) {
       // all is done
     }
   }
