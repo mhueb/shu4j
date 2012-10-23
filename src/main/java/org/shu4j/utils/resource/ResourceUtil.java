@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import org.shu4j.utils.stream.ReaderInputStream;
 
 
-public class ResourceUtil {
+public final class ResourceUtil {
   public static String loadFile(Class<?> location, String file) throws IOException {
     return new String(loadFileBin(location, file));
   }

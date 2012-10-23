@@ -16,32 +16,28 @@
 package org.shu4j.utils.progress;
 
 /**
- * Dummy implementation.<br>
- * This class is usable if no special progress monitor is used, especially in tests. It is recommended to use
- * an instance of this class instead of null.
- * 
- * @author heb
+ * Dummy implementation for testing purpose.<br>
  * 
  */
 public final class ProgressMonitorDummy implements IProgressMonitor {
-  private static ProgressMonitorDummy instance = null;
+  private static ProgressMonitorDummy instance = new ProgressMonitorDummy();
 
   private ProgressMonitorDummy() {
   }
 
-  public static ProgressMonitorDummy getInstance() {
-    if (null == instance) {
-      instance = new ProgressMonitorDummy();
-    }
+  public static ProgressMonitorDummy get() {
     return instance;
   }
 
+  @Override
   public void begin(String title, int steps) {
   }
 
+  @Override
   public void log(String comment, LogLevel level) {
   }
 
+  @Override
   public void step(int units) {
   }
 

@@ -36,12 +36,10 @@ public interface IProgressMonitor {
   void done();
 
   public static enum LogLevel {
+    TRACE,
     INFO,
     WARNING,
-    ERROR,
-    STDOUT,
-    STDERR,
-    DEBUG
+    ERROR
   }
 
   /**

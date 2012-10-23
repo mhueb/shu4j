@@ -20,15 +20,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.shu4j.utils.util.LoggerUtil;
 
 public class ClassDescriptor {
-  private final Logger log = LoggerFactory.getLogger(ClassDescriptor.class);
+  private final Logger log = LoggerUtil.getLogger(ClassDescriptor.class);
 
-  private Properties props;
+  private final Properties props;
   private String name;
 
   public ClassDescriptor(Class<?> cls) {
@@ -48,7 +49,7 @@ public class ClassDescriptor {
       return props;
     }
     catch (IOException e) {
-      log.error("Failed to load properties of class bundle " + cls.getName(), e);
+      log.log(Level.SEVERE, "Failed to load properties of class bundle " + cls.getName(), e);
     }
     return null;
   }
@@ -58,8 +59,8 @@ public class ClassDescriptor {
 
     try {
       InputStream input = ResourceUtil.openResourceStream(cls, file, "utf-8");
-      if (log.isTraceEnabled())
-        log.trace("Loading properties of class bundle " + cls.getName() + " from " + file);
+      if (log.isLoggable(Level.FINER))
+        log.finer("Loading properties of class bundle " + cls.getName() + " from " + file);
 
       Properties props = new Properties();
       props.load(input);
@@ -77,8 +78,8 @@ public class ClassDescriptor {
         descr = props.getProperty(member + ".description");
       else
         descr = props.getProperty("description");
-      if (StringUtils.isEmpty(descr) && log.isTraceEnabled())
-        log.trace(this.name + " description not set for member " + member);
+      if (StringUtils.isEmpty(descr) && log.isLoggable(Level.FINER))
+        log.finer(this.name + " description not set for member " + member);
       return descr;
     }
     else
@@ -93,8 +94,8 @@ public class ClassDescriptor {
       else
         name = props.getProperty("name");
       if (StringUtils.isEmpty(name)) {
-        if (log.isWarnEnabled() && member != null)
-          log.warn(this.name + ": " + member + ".name not set!");
+        if (log.isLoggable(Level.WARNING) && member != null)
+          log.warning(this.name + ": " + member + ".name not set!");
       }
       else
         return name;

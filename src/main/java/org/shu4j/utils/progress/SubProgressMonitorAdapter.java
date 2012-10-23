@@ -36,8 +36,9 @@ public final class SubProgressMonitorAdapter implements IProgressMonitor {
     this.parentStepCount = parentStepCount;
   }
 
+  @Override
   public void begin(String title, int stepCount) {
-    if (title==null || title.isEmpty() )
+    if (title == null || title.isEmpty())
       throw new IllegalArgumentException("invalid title='" + title + "'");
     if (parentInc != null)
       throw new IllegalStateException("Not allowed to call twice!");
@@ -53,14 +54,12 @@ public final class SubProgressMonitorAdapter implements IProgressMonitor {
     }
   }
 
+  @Override
   public void log(String comment, LogLevel level) {
     parent.log(comment, level);
-    // if (StringUtil.isNull(comment))
-    // parent.log(this.title, level);
-    // else
-    // parent.log(this.title + "/" + comment, level);
   }
 
+  @Override
   public void done() {
     try {
       parent.step(parentStepCount - parentStepCounter);
@@ -68,14 +67,14 @@ public final class SubProgressMonitorAdapter implements IProgressMonitor {
       parentCounter = 0.0;
     }
     catch (CancelationException e) {
-      // all is done
+      // all done
     }
   }
 
+  @Override
   public void step(int steps) {
     if (parentInc == null)
-      return; // throw new IllegalStateException("Unexpected call to step. Call begin first!"); besser
-    // loggen????
+      return;
 
     parentCounter += parentInc * steps;
     int inc = (int) parentCounter; // inc may be 0

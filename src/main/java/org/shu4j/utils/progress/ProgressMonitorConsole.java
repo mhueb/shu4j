@@ -45,7 +45,7 @@ public final class ProgressMonitorConsole implements IProgressMonitor {
   }
 
   public void log(String comment, LogLevel level) {
-    if (level == LogLevel.ERROR || level == LogLevel.STDERR)
+    if (level == LogLevel.ERROR)
       System.err.println(comment);
     else
       System.out.println(comment);

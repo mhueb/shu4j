@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TextGetterPool {
-  final ILocaleGetter localeGetter;
+  private final ILocaleGetter localeGetter;
 
   private final Map<Class<?>, Object> textGetterMap = new HashMap<Class<?>, Object>();
 
