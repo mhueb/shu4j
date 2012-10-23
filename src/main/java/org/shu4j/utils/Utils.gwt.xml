@@ -4,6 +4,7 @@
 	<source path="crypt"/>
 	<source path="exception"/>
 	<source path="message"/>
+	<source path="permission"/>
 	<source path="progress"/>
 	<source path="util"/>
 </module>
