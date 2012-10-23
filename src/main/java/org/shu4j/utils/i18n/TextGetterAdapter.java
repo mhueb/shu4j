@@ -22,16 +22,17 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.shu4j.utils.resource.ResourceUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.shu4j.utils.util.LoggerUtil;
 
 public final class TextGetterAdapter implements InvocationHandler {
   private static final String PROPERTIES = ".properties";
   private static final String UTF_8 = "utf-8";
 
-  private final Logger logger = LoggerFactory.getLogger(TextGetterAdapter.class);
+  private final Logger logger = LoggerUtil.getLogger(TextGetterAdapter.class);
 
   private final Class<?> textGetterInterfaceClass;
   private final Map<String, Properties> properties = new HashMap<String, Properties>();
@@ -43,6 +44,7 @@ public final class TextGetterAdapter implements InvocationHandler {
     this.localeGetter = localeGetter;
   }
 
+  @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     Properties props = getProperties();
     String result = find(props, method.getName());
@@ -56,7 +58,7 @@ public final class TextGetterAdapter implements InvocationHandler {
   private String find(Properties props, String name) {
     String result = props.getProperty(name);
     if (result == null) {
-      logger.error("Missing property '" + name + "' in property file of class " + textGetterInterfaceClass.getSimpleName() );
+      logger.severe("Missing property '" + name + "' in property file of class " + textGetterInterfaceClass.getSimpleName());
       result = "##" + name + "##";
       props.setProperty(name, result);
     }
@@ -86,14 +88,14 @@ public final class TextGetterAdapter implements InvocationHandler {
         props.load(resourceAsStream);
       }
       catch (IOException e) {
-        logger.warn("Failed to load i18n properties", e);
+        logger.log(Level.WARNING, "Failed to load i18n properties", e);
       }
       try {
         resourceAsStream.close();
       }
       catch (IOException e) {
-        if (logger.isInfoEnabled())
-          logger.info("Failed to close i18n property file", e);
+        if (logger.isLoggable(Level.INFO))
+          logger.log(Level.INFO, "Failed to close i18n property file", e);
       }
     }
     return props;
@@ -104,8 +106,8 @@ public final class TextGetterAdapter implements InvocationHandler {
       return ResourceUtil.openResourceStream(textGetterInterfaceClass, file, UTF_8);
     }
     catch (IOException e) {
-      if (logger.isDebugEnabled())
-        logger.debug("I18N property file not available: " + file, e);
+      if (logger.isLoggable(Level.FINE))
+        logger.log(Level.FINE, "I18N property file not available: " + file, e);
       return null;
     }
   }
