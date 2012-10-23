@@ -15,18 +15,19 @@
  */
 package org.shu4j.utils.exception;
 
-public class UnexpectedErrorException extends RuntimeException {
+import java.io.Serializable;
+
+public class AuthorisationFailure extends Exception implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public UnexpectedErrorException(String message, Throwable cause) {
-    super(message, cause);
+  public AuthorisationFailure() {
   }
 
-  public UnexpectedErrorException(String message) {
-    super(message);
+  public AuthorisationFailure(String string) {
+    super(string);
   }
 
-  public UnexpectedErrorException(Throwable e) {
-    super(e == null ? null : e.getMessage(), e);
+  public AuthorisationFailure(String string, Throwable t) {
+    super(string, t);
   }
 }

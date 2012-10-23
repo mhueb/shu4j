@@ -15,18 +15,17 @@
  */
 package org.shu4j.utils.exception;
 
-public class UnexpectedErrorException extends RuntimeException {
+public class InvalidSessionException extends AuthorisationFailure {
   private static final long serialVersionUID = 1L;
 
-  public UnexpectedErrorException(String message, Throwable cause) {
-    super(message, cause);
+  public InvalidSessionException() {
   }
 
-  public UnexpectedErrorException(String message) {
-    super(message);
+  public InvalidSessionException(String msg) {
+    super(msg);
   }
 
-  public UnexpectedErrorException(Throwable e) {
-    super(e == null ? null : e.getMessage(), e);
+  public InvalidSessionException(String msg, Throwable t) {
+    super(msg, t);
   }
 }
