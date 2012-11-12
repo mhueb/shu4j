@@ -18,34 +18,25 @@ package org.shu4j.utils.util;
 import java.text.ParseException;
 
 import org.apache.commons.lang.StringUtils;
+import org.shu4j.utils.rc.DurationConstants;
 
 public class DurationFormat {
 
-  public interface TextConstants {
-    String abbreviationDays();
-
-    String abbreviationHours();
-
-    String abbreviationMinutes();
-
-    String abbreviationSeconds();
-  }
-
   private final Integer hpd;
   private final boolean seconds;
-  private final TextConstants texts;
+  private final DurationConstants texts;
 
-  public DurationFormat(TextConstants texts, Integer hpd, boolean seconds) {
+  public DurationFormat(DurationConstants texts, Integer hpd, boolean seconds) {
     this.texts = texts;
     this.hpd = hpd;
     this.seconds = seconds;
   }
 
-  public DurationFormat(TextConstants texts, boolean seconds) {
+  public DurationFormat(DurationConstants texts, boolean seconds) {
     this(texts, null, seconds);
   }
 
-  public DurationFormat(TextConstants texts, Integer hpd) {
+  public DurationFormat(DurationConstants texts, Integer hpd) {
     this(texts, hpd, false);
   }
 
