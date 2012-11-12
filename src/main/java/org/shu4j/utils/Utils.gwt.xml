@@ -6,5 +6,6 @@
 	<source path="message"/>
 	<source path="permission"/>
 	<source path="progress"/>
+	<source path="rc"/>
 	<source path="util"/>
 </module>
