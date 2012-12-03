@@ -142,7 +142,7 @@ public class XTEA {
   }
 
   public String decryptString(byte[] data) {
-    return new String(toCharArray(data));
+    return new String(toCharArray(decrypt(data)));
   }
 
   private char[] toCharArray(byte[] data) {
