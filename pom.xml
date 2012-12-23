@@ -81,34 +81,6 @@
 				<version>2.3.2</version>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.m2e</groupId>
-				<artifactId>lifecycle-mapping</artifactId>
-				<version>1.0.0</version>
-				<configuration>
-					<lifecycleMappingMetadata>
-						<pluginExecutions>
-							<pluginExecution>
-								<pluginExecutionFilter>
-									<groupId>org.bsc.maven</groupId>
-									<artifactId>
-										maven-processor-plugin
-									</artifactId>
-									<versionRange>
-										[2.0.5,)
-									</versionRange>
-									<goals>
-										<goal>process</goal>
-									</goals>
-								</pluginExecutionFilter>
-								<action>
-									<ignore />
-								</action>
-							</pluginExecution>
-						</pluginExecutions>
-					</lifecycleMappingMetadata>
-				</configuration>
-			</plugin>
-			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
@@ -125,9 +97,7 @@
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
-
 		</plugins>
-
 	</build>
 
 </project>
