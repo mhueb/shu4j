@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 	<name>some helpful java utilities</name>
 
-	<description>Java utility classes</description>
+	<description>some helpful java utilities</description>
 	<url>https://github.com/mhueb/gwtao</url>
 	<licenses>
 		<license>
@@ -24,11 +24,10 @@
 	</scm>
 	<developers>
 		<developer>
-			<name>m.huebner</name>
-			<email>m.huebner@pobox.com</email>
+			<name>mhueb</name>
+			<email>mhueb@pobox.com</email>
 		</developer>
 	</developers>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
