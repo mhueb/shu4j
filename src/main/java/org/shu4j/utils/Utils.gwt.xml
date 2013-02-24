@@ -9,5 +9,6 @@
 	<source path="permission" />
 	<source path="progress" />
 	<source path="rc" />
+	<source path="search" />
 	<source path="util" />
 </module>
