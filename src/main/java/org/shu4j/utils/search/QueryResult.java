@@ -21,14 +21,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class SearchResult<T> implements Serializable {
+public class QueryResult<T> implements Serializable {
   private static final long serialVersionUID = 1;
 
-  private static final SearchResult<Object> EMPTY = new SearchResult<Object>(Collections.emptyList(), 0);
+  private static final QueryResult<Object> EMPTY = new QueryResult<Object>(Collections.emptyList(), 0);
 
   @SuppressWarnings("unchecked")
-  public static <T> SearchResult<T> emptyResult() {
-    return (SearchResult<T>) EMPTY;
+  public static <T> QueryResult<T> emptyResult() {
+    return (QueryResult<T>) EMPTY;
   }
 
   private int totalCount;
@@ -37,22 +37,22 @@ public class SearchResult<T> implements Serializable {
 
   private List<SortField> sorting;
 
-  public SearchResult() {
+  public QueryResult() {
     result = new ArrayList<T>();
   }
 
-  public SearchResult(List<T> result, int totalCount) {
+  public QueryResult(List<T> result, int totalCount) {
     this.result = result;
     this.totalCount = totalCount;
   }
 
-  public SearchResult(List<T> result, int totalCount, List<SortField> sorting) {
+  public QueryResult(List<T> result, int totalCount, List<SortField> sorting) {
     this.result = result;
     this.totalCount = totalCount;
     this.sorting = sorting;
   }
 
-  public SearchResult(List<T> result) {
+  public QueryResult(List<T> result) {
     this(result, result.size());
   }
 
