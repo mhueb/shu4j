@@ -8,7 +8,7 @@
 	<source path="message" />
 	<source path="permission" />
 	<source path="progress" />
+	<source path="query" />
 	<source path="rc" />
-	<source path="search" />
 	<source path="util" />
 </module>
