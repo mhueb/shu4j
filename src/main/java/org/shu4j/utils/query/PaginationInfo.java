@@ -23,7 +23,7 @@ import java.util.List;
 public final class PaginationInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  private Integer start;
+  private int start;
   private Integer limit;
 
   private List<SortField> sortFields;
@@ -31,26 +31,26 @@ public final class PaginationInfo implements Serializable {
   protected PaginationInfo() {
   }
 
-  public PaginationInfo(Integer start, Integer limit, String sortField, boolean sortAsc) {
+  public PaginationInfo(int start, Integer limit, String sortField, boolean sortAsc) {
     this(start, limit, new SortField(sortField, sortAsc));
   }
 
-  public PaginationInfo(Integer start, Integer limit, SortField... sortFields) {
+  public PaginationInfo(int start, Integer limit, SortField... sortFields) {
     this(start, limit, Arrays.asList(sortFields));
   }
 
-  public PaginationInfo(Integer start, Integer limit, List<SortField> sortFields) {
+  public PaginationInfo(int start, Integer limit, List<SortField> sortFields) {
     this.start = start;
     this.limit = limit;
     this.sortFields = sortFields;
   }
 
-  public Integer getStart() {
+  public int getStart() {
     return start;
   }
 
-  public Integer getLimit() {
-    return limit;
+  public int getLimit(int dft) {
+    return limit == null && limit > 0 ? dft : limit;
   }
 
   public int getSortFieldCount() {
