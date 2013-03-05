@@ -24,7 +24,7 @@ import java.util.List;
 public class QueryResult<T> implements Serializable {
   private static final long serialVersionUID = 1;
 
-  private static final QueryResult<Object> EMPTY = new QueryResult<Object>(Collections.emptyList(), 0);
+  private static final QueryResult<Object> EMPTY = new QueryResult<Object>(Collections.emptyList(), 0, 0);
 
   @SuppressWarnings("unchecked")
   public static <T> QueryResult<T> emptyResult() {
@@ -37,34 +37,42 @@ public class QueryResult<T> implements Serializable {
 
   private List<SortField> sorting;
 
+  private int start;
+
   public QueryResult() {
     result = new ArrayList<T>();
   }
 
-  public QueryResult(List<T> result, int totalCount) {
+  public QueryResult(List<T> result, int start, int totalCount) {
     this.result = result;
+    this.start = start;
     this.totalCount = totalCount;
   }
 
-  public QueryResult(List<T> result, int totalCount, List<SortField> sorting) {
+  public QueryResult(List<T> result, int start, int totalCount, List<SortField> sorting) {
     this.result = result;
+    this.start = start;
     this.totalCount = totalCount;
     this.sorting = sorting;
   }
 
   public QueryResult(List<T> result) {
-    this(result, result.size());
+    this(result, 0, result.size());
+  }
+
+  public int getStart() {
+    return start;
   }
 
   public int getTotalCount() {
     return totalCount;
   }
 
-  public Collection<T> getResult() {
+  public List<T> getResult() {
     return result;
   }
 
   public List<SortField> getSorting() {
-    return sorting;
+    return Collections.unmodifiableList(sorting);
   }
 }
