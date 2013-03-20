@@ -17,17 +17,16 @@ package org.shu4j.utils.query;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class QueryResult<T> implements Serializable {
+public class QueryResult<T extends Serializable> implements Serializable {
   private static final long serialVersionUID = 1;
 
-  private static final QueryResult<Object> EMPTY = new QueryResult<Object>(Collections.emptyList(), 0, 0);
+  private static final QueryResult<Serializable> EMPTY = new QueryResult<Serializable>();
 
   @SuppressWarnings("unchecked")
-  public static <T> QueryResult<T> emptyResult() {
+  public static <T extends Serializable> QueryResult<T> emptyResult() {
     return (QueryResult<T>) EMPTY;
   }
 
