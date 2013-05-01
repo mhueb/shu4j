@@ -13,8 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.shu4j.utils.permission;
+package org.shu4j.utils.rc;
 
-public interface IPermissionDelegate {
-  Permission getPermission(Object... data);
+import org.shu4j.utils.i18n.I18NMessages;
+
+public interface AgeMessages extends I18NMessages {
+  String yesterday(String time);
+
+  String today(String time);
+
+  String daysAgo(long days, String time);
+
+  String inDays(long days, String time);
 }

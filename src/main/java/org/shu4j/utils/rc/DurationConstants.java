@@ -15,7 +15,9 @@
  */
 package org.shu4j.utils.rc;
 
-public interface DurationConstants {
+import org.shu4j.utils.i18n.I18NConstants;
+
+public interface DurationConstants extends I18NConstants {
   String abbreviationDays();
 
   String abbreviationHours();
