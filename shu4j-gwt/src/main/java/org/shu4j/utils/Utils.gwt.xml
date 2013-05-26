@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name="com.gwtao.apache.commons.Emul" />
+	<inherits name="com.gwtao.jdk.Emul" />
+	<source path="crypt" />
+	<source path="exception" />
+	<source path="message" />
+	<source path="permission" />
+	<source path="progress" />
+	<source path="query" />
+	<source path="rc" />
+	<source path="util" />
+	<super-source path="emul" />
+</module>
