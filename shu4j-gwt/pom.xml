@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>shu4j-gwt</artifactId>
+	<name>gwt adapter</name>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>org.shu4j</groupId>
+		<artifactId>shu4j-parent</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+		<relativePath>../shu4j-parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>2.5.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.shu4j</groupId>
+			<artifactId>shu4j-utils</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<excludes>
+					<exclude>META-INF/**</exclude>
+				</excludes>
+				<directory>${project.build.directory}/sources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<executions>
+					<execution>
+						<id>src-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<!-- use copy-dependencies instead if you don't want to explode the 
+								sources -->
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>shu4j-utils</includeArtifactIds>
+							<classifier>sources</classifier>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+							<outputDirectory>${project.build.directory}/sources</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/*.java</include>
+								<include>**/*.properties</include>
+								<include>**/*.xml</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
