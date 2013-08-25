@@ -20,13 +20,7 @@ package org.shu4j.utils.progress;
  * 
  */
 public final class ProgressMonitorDummy implements IProgressMonitor {
-  private static ProgressMonitorDummy instance = new ProgressMonitorDummy();
-
-  private ProgressMonitorDummy() {
-  }
-
-  public static ProgressMonitorDummy get() {
-    return instance;
+  public ProgressMonitorDummy() {
   }
 
   @Override
