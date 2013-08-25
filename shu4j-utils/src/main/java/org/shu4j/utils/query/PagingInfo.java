@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public final class PaginationInfo implements Serializable {
+public final class PagingInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 
   private int start;
@@ -28,18 +28,18 @@ public final class PaginationInfo implements Serializable {
 
   private List<SortField> sortFields;
 
-  protected PaginationInfo() {
+  protected PagingInfo() {
   }
 
-  public PaginationInfo(int start, Integer limit, String sortField, boolean sortAsc) {
+  public PagingInfo(int start, Integer limit, String sortField, boolean sortAsc) {
     this(start, limit, new SortField(sortField, sortAsc));
   }
 
-  public PaginationInfo(int start, Integer limit, SortField... sortFields) {
+  public PagingInfo(int start, Integer limit, SortField... sortFields) {
     this(start, limit, Arrays.asList(sortFields));
   }
 
-  public PaginationInfo(int start, Integer limit, List<SortField> sortFields) {
+  public PagingInfo(int start, Integer limit, List<SortField> sortFields) {
     this.start = start;
     this.limit = limit;
     this.sortFields = sortFields;

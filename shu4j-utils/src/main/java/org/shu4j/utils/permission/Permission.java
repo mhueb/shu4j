@@ -15,7 +15,7 @@
  */
 package org.shu4j.utils.permission;
 
-public enum Permission {
+public enum Permission implements IPermissionDelegate {
   ALLOWED(1),
   READONLY(2),
   HIDDEN(3);
@@ -56,5 +56,10 @@ public enum Permission {
       throw new IllegalArgumentException("Value does not represent a permission.");
     }
     return null;
+  }
+
+  @Override
+  public Permission getPermission(Object... data) {
+    return this;
   }
 }
