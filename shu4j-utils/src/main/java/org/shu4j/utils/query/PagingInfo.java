@@ -60,4 +60,11 @@ public final class PagingInfo implements Serializable {
   public List<SortField> getSorting() {
     return Collections.unmodifiableList(sortFields);
   }
+
+  public SortField getSortField(int i) {
+    if (i >= 0 && i < getSortFieldCount())
+      return sortFields.get(i);
+    else
+      return null;
+  }
 };
