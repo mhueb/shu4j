@@ -13,16 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.shu4j.utils.permission;
+package org.shu4j.utils.privilege;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.io.Serializable;
 
-public abstract class PrivilegeGroup implements Iterable<Privilege> {
-  private final List<Privilege> privileges = new ArrayList<Privilege>();
-  private String id;
+public final class PrivilegeGroup implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  private final String id;
 
   public PrivilegeGroup(String id) {
     this.id = id;
@@ -31,14 +29,4 @@ public abstract class PrivilegeGroup implements Iterable<Privilege> {
   public String getId() {
     return id;
   }
-
-  void add(Privilege privilege) {
-    this.privileges.add(privilege);
-  }
-
-  @Override
-  public Iterator<Privilege> iterator() {
-    return Collections.unmodifiableList(privileges).iterator();
-  }
-
 }

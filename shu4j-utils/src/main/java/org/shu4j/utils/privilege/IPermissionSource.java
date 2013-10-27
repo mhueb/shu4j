@@ -13,23 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.shu4j.utils.permission;
+package org.shu4j.utils.privilege;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import org.shu4j.utils.permission.IPermissionDelegate;
 
-public class SimplePrivilegeSource implements IPrivilegeSource {
-  private final Map<String, IPermissionDelegate> privilegeMap = new HashMap<String, IPermissionDelegate>();
-
-  public SimplePrivilegeSource(Map<String, Permission> privileges) {
-    for (Entry<String, Permission> entry : privileges.entrySet())
-      privilegeMap.put(entry.getKey(), entry.getValue());
-  }
-
-  @Override
-  public IPermissionDelegate getDelegate(String id) {
-    return privilegeMap.get(id);
-  }
-
+public interface IPermissionSource {
+  IPermissionDelegate getDelegate(Privilege id);
 }

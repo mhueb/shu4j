@@ -15,7 +15,7 @@
  */
 package org.shu4j.utils.exception;
 
-public class InvalidSessionException extends AuthorisationFailure {
+public class InvalidSessionException extends AuthorisationException {
   private static final long serialVersionUID = 1L;
 
   public InvalidSessionException() {

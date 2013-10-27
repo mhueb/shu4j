@@ -20,55 +20,55 @@ import org.shu4j.utils.message.Message;
 import org.shu4j.utils.message.MessageLevel;
 import org.shu4j.utils.message.MessageList;
 
-public class ValidateException extends Exception {
+public class MessageException extends Exception {
   private static final long serialVersionUID = 1L;
 
   private MessageList messages;
 
-  public ValidateException() {
+  public MessageException() {
   }
 
-  public ValidateException(Message message) {
+  public MessageException(Message message) {
     addMessage(message);
   }
 
-  public ValidateException(Message message, Throwable e) {
+  public MessageException(Message message, Throwable e) {
     super(e);
     addMessage(message);
   }
 
-  public ValidateException(Throwable e) {
+  public MessageException(Throwable e) {
     this(new Message(e.getMessage(), MessageLevel.FATAL), e);
   }
 
-  public ValidateException(String msg) {
+  public MessageException(String msg) {
     this(msg, MessageLevel.FATAL);
   }
 
-  public ValidateException(String msg, MessageLevel level) {
+  public MessageException(String msg, MessageLevel level) {
     this(new Message(msg, level));
   }
 
-  public ValidateException(String msg, Throwable e, MessageLevel level) {
+  public MessageException(String msg, Throwable e, MessageLevel level) {
     this(new Message(msg, level), e);
   }
 
-  public ValidateException(String msg, Throwable e) {
+  public MessageException(String msg, Throwable e) {
     this(new Message(msg, MessageLevel.FATAL), e);
   }
 
-  public ValidateException(IMessageSource messages) {
+  public MessageException(IMessageSource messages) {
     this.messages = new MessageList(messages);
   }
 
-  public ValidateException addMessage(Message message) {
+  public MessageException addMessage(Message message) {
     if (messages == null)
       messages = new MessageList();
     messages.add(message);
     return this;
   }
 
-  public ValidateException addMessages(IMessageSource add) {
+  public MessageException addMessages(IMessageSource add) {
     if (add != null) {
       if (messages == null)
         messages = new MessageList();
