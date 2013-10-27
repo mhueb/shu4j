@@ -17,17 +17,17 @@ package org.shu4j.utils.exception;
 
 import java.io.Serializable;
 
-public class AuthorisationFailure extends Exception implements Serializable {
+public class AuthorisationException extends Exception implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public AuthorisationFailure() {
+  public AuthorisationException() {
   }
 
-  public AuthorisationFailure(String string) {
+  public AuthorisationException(String string) {
     super(string);
   }
 
-  public AuthorisationFailure(String string, Throwable t) {
+  public AuthorisationException(String string, Throwable t) {
     super(string, t);
   }
 }
