@@ -65,17 +65,17 @@ public class PrivilegeExtractor {
       return splitPathId(id)[1];
   }
 
-  private void register(PrivilegeGroup data) {
-    String[] ids = splitPathId(data.getId());
+  private void register(PrivilegeGroup privilegeGroup) {
+    String[] ids = splitPathId(privilegeGroup.getId());
     PrivilegeGroupInfo parent = StringUtils.isNotBlank(ids[0]) ? root.getGroup(ids[0]) : root;
-    new PrivilegeGroupInfo(ids[1], getName(data.getId()), getDescription(data.getId()),parent);
+    new PrivilegeGroupInfo(ids[1], getName(privilegeGroup.getId()), getDescription(privilegeGroup.getId()), parent);
   }
 
-  private void register(Privilege data) {
-    PrivilegeInfo info = new PrivilegeInfo(data.getId(), getName(data.getId()), getDescription(data.getId()));
-    String groupid = splitPathId(data.getId())[0];
-    PrivilegeGroupInfo group = root.getGroup(groupid);
-    group.addPrivilege(info);
+  private void register(Privilege privilege) {
+    PrivilegeInfo prinilegeInfo = new PrivilegeInfo(privilege.getId(), getName(privilege.getId()), getDescription(privilege.getId()), privilege.getDelegateType());
+    String groupid = splitPathId(privilege.getId())[0];
+    PrivilegeGroupInfo groupInfo = root.getGroup(groupid);
+    groupInfo.addPrivilege(prinilegeInfo);
   }
 
   private String[] splitPathId(String id) {

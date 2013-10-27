@@ -17,6 +17,6 @@ package org.shu4j.utils.privilege;
 
 import org.shu4j.utils.permission.IPermissionDelegate;
 
-public interface IPermissionSource {
-  IPermissionDelegate getDelegate(Privilege id);
+public interface IPrivilegeProvider {
+  IPermissionDelegate get(Privilege id);
 }

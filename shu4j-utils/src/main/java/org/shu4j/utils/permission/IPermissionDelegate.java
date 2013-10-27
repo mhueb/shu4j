@@ -15,6 +15,8 @@
  */
 package org.shu4j.utils.permission;
 
-public interface IPermissionDelegate {
+import java.io.Serializable;
+
+public interface IPermissionDelegate extends Serializable {
   Permission getPermission(Object... data);
 }
