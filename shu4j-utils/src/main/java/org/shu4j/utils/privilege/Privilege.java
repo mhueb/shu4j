@@ -15,36 +15,32 @@
  */
 package org.shu4j.utils.privilege;
 
-import org.shu4j.utils.permission.IPermissionFactory;
-import org.shu4j.utils.permission.SimplePermissionFactory;
-
 public final class Privilege {
   private final String id;
-  private final IPermissionFactory delegateFactory;
+  private final String delegateType;
 
   public Privilege(PrivilegeGroup group, String id) {
-    this(group, id, SimplePermissionFactory.getInstance());
+    this(group, id, null);
   }
 
-  public Privilege(PrivilegeGroup group, String id, IPermissionFactory delegateFactory) {
-    this.delegateFactory = delegateFactory;
-    this.id = group.getId() + "." + id;
+  public Privilege(PrivilegeGroup group, String id, String delegateType) {
+    this(group.getId() + "." + id, delegateType);
   }
 
   public Privilege(String id) {
-    this(id, SimplePermissionFactory.getInstance());
+    this(id, null);
   }
 
-  public Privilege(String id, IPermissionFactory delegateFactory) {
+  public Privilege(String id, String delegateType) {
     this.id = id;
-    this.delegateFactory = delegateFactory;
+    this.delegateType = delegateType;
   }
 
   public String getId() {
     return id;
   }
 
-  public IPermissionFactory getDelegateFactory() {
-    return delegateFactory;
+  public String getDelegateType() {
+    return delegateType;
   }
 }

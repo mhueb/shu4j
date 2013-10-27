@@ -7,6 +7,7 @@
 	<source path="exception" />
 	<source path="message" />
 	<source path="permission" />
+	<source path="privilege" />
 	<source path="progress" />
 	<source path="query" />
 	<source path="rc" />

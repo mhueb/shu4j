@@ -26,12 +26,18 @@ import org.shu4j.utils.util.Hasher;
 
 public final class PrivilegeInfo extends AbstractPrivilegeInfo {
   private static final long serialVersionUID = 1L;
+  private String typeId;
 
   protected PrivilegeInfo() {
   }
 
-  public PrivilegeInfo(String id, String name, String description) {
+  public PrivilegeInfo(String id, String name, String description, String typeId) {
     super(id, name, description);
+    this.typeId = typeId;
+  }
+
+  public String getTypeId() {
+    return typeId;
   }
 
   @Override
