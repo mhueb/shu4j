@@ -13,10 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.shu4j.utils.privilege;
+package org.shu4j.utils.permission;
 
-import org.shu4j.utils.permission.IPermissionDelegate;
 
-public interface IPrivilegeProvider {
-  IPermissionDelegate get(Privilege id);
+public interface IPermissionProvider {
+  IPermissionDelegate get(String id);
 }

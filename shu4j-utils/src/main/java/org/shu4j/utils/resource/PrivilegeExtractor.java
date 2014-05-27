@@ -28,8 +28,8 @@ import java.lang.reflect.Modifier;
 import org.apache.commons.lang.StringUtils;
 import org.shu4j.utils.privilege.Privilege;
 import org.shu4j.utils.privilege.PrivilegeGroup;
-import org.shu4j.utils.privilege.info.PrivilegeGroupInfo;
-import org.shu4j.utils.privilege.info.PrivilegeInfo;
+import org.shu4j.utils.privilege.PrivilegeGroupInfo;
+import org.shu4j.utils.privilege.PrivilegeInfo;
 
 public class PrivilegeExtractor {
 

@@ -20,7 +20,7 @@
  *
  * $Id: $
  */
-package org.shu4j.utils.privilege.info;
+package org.shu4j.utils.privilege;
 
 import java.util.Collection;
 import java.util.Collections;

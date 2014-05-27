@@ -20,7 +20,7 @@
  *
  * $Id: $
  */
-package org.shu4j.utils.privilege.info;
+package org.shu4j.utils.privilege;
 
 import org.shu4j.utils.util.Hasher;
 
