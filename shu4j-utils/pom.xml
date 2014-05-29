@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.shu4j</groupId>
 		<artifactId>shu4j-parent</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
+		<version>0.3.0-SNAPSHOT</version>
 		<relativePath>../shu4j-parent/pom.xml</relativePath>
 	</parent>
 	
