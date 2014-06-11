@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
 public class DateUtil {
   private DateUtil() {
   }
-  
+
   public static Date clearTime(Date date) {
     if (date == null)
       return null;
@@ -151,6 +151,16 @@ public class DateUtil {
     cal.set(Calendar.MONTH, os > 31 ? 4 : 3);
     cal.set(Calendar.DAY_OF_MONTH, os > 31 ? os - 31 : os);
     return cal.getTime();
+  }
+
+  @SuppressWarnings("deprecation")
+  public static int getHours(Date date) {
+    return date == null ? 0 : date.getHours();
+  }
+
+  @SuppressWarnings("deprecation")
+  public static int getMinutes(Date date) {
+    return date == null ? 0 : date.getMinutes();
   }
 
 }
